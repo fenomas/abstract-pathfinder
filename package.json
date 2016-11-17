@@ -1,0 +1,14 @@
+{
+  "name": "abstract-pathfinder",
+  "version": "0.0.1",
+  "description": "Completely agnostic A* pathfinding",
+  "main": "finder.js",
+  "scripts": {
+    "test": "node examples/example1.js"
+  },
+  "author": "Andy Hall",
+  "license": "MIT",
+  "dependencies": {
+    "js-priority-queue": "^0.1.5"
+  }
+}
