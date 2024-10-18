@@ -1,51 +1,36 @@
 # abstract-pathfinder
 
-Completely agnostic A* pathfinding. 
+Type-agnostic A\* pathfinding.
 
-Doesn't care how your data is structured. Just implement a minimal set of accessors, 
-and this module will apply [A*](https://en.wikipedia.org/wiki/A*_search_algorithm) 
+Doesn't care how your data is structured - just implement a minimal set of accessors,
+and this module will apply [A\*](https://en.wikipedia.org/wiki/A*_search_algorithm)
 to whatever data or graph you're using.
+
+Now built in typescript! Takes any arbitrary type for the graph nodes.
 
 ### Installation:
 
 ```shell
-npm i --save abstract-pathfinder
+pnpm i abstract-pathfinder
 ```
 
 ### Usage:
 
-```js
-var Pathfinder = require('abstract-pathfinder')
-var finder = new Pathfinder()
+```ts
+import { Pathfinder } from 'abstract-pathfinder'
 
-// implement stuff
-finder.nodeToPrimitive = function (node) { ... }
-finder.getNeighbors = function (node) { ... }
-finder.getMovementCost = function (nodeA, nodeB) { ... }
-finder.getHeuristic = function (nodeA, nodeB) { ... }
+type MyNodeType = { x: number; y: number } // or whatever
 
-// specify two nodes and find a path
-var path = finder.findPath(startNode, endNode)
+const finder = new Pathfinder<MyNodeType>({
+  nodeToPrimitive: (node) => 'a', // unique key for each node
+  getNeighbors: (node) => [],     // array of neighboring nodes
+  getMoveCost: (a, b) => 1 ,      // move cost between neighboring nodes
+  getHeuristic: (a, b) => 1,      // guess at move cost between arbitrary nodes
+})
+
+const path = finder.findPath(start, end) // array of nodes, or [] if no path found
 ```
-
-Note that `node` here means an whatever you're using to represent 
-positions in the graph you're findind a path through.
-Nodes can be any type, as long as you implement the methods consistently.
-
-Details:
-
- * `nodeToPrimitive` should return a **string or number** (uniquely) for the given node 
- * `getNeighbors` should return an **array of nodes** directly accessible from the given one 
- * `getMovementCost` should return a **number** for the cost of moving between neighboring nodes. 
-    Negative costs mean that movement is impossible.
- * `getHeuristic` should return a [A* heuristic](http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html) **number**. 
-   Typically this means a lower limit of the total cost of moving between the two (not necessarily neighboring) nodes.
- * `findPath` returns an array of nodes, or `[]` if no path was found 
-
-
-See the `examples` folder for some working demos. 
-Example 1 uses strings for nodes; Example 2 uses objects.
 
 ### By:
 
-Copyright Andy Hall, 2016. MIT license.
+Made with 🍺 by [fenomas](https://fenomas.com).

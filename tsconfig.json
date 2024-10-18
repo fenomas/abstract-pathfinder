@@ -1,0 +1,24 @@
+{
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["**/*.test.ts", "dist", "docs", "node_modules"],
+
+  "compilerOptions": {
+    "outDir": "./dist",
+
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+
+    // strict options
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  }
+}

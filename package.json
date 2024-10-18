@@ -1,14 +1,30 @@
 {
   "name": "abstract-pathfinder",
-  "version": "0.0.1",
-  "description": "Completely agnostic A* pathfinding",
-  "main": "finder.js",
+  "version": "0.1.0",
+  "description": "Agnostic A* pathfinding",
+  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "node examples/example1.js"
+    "build": "tsc",
+    "test": "tsx --test"
   },
-  "author": "Andy Hall",
+  "author": "andy@fenomas.com",
   "license": "MIT",
   "dependencies": {
-    "js-priority-queue": "^0.1.5"
+    "ts-priority-queue": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.6",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100,
+    "semi": false
   }
 }
