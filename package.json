@@ -2,7 +2,6 @@
   "name": "abstract-pathfinder",
   "version": "0.1.0",
   "description": "Agnostic A* pathfinding",
-  "module": "src/index.ts",
   "main": "dist/index.js",
   "files": [
     "dist"

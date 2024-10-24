@@ -1,7 +1,7 @@
 interface Methods<T> {
     nodeToPrimitive: (node: T) => PropertyKey;
     getNeighbors: (node: T) => T[];
-    getMovementCost: (a: T, b: T) => number;
+    getMoveCost: (a: T, b: T) => number;
     getHeuristic: (a: T, b: T) => number;
 }
 export declare class Pathfinder<T> {

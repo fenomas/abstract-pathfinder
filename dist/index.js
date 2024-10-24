@@ -12,7 +12,7 @@ class Pathfinder {
         this.methods = {
             nodeToPrimitive: (node) => node,
             getNeighbors: () => [],
-            getMovementCost: () => 1,
+            getMoveCost: () => 1,
             getHeuristic: () => 1,
             ...params,
         };
@@ -37,7 +37,7 @@ class Pathfinder {
                 break;
             curr.open = false;
             this.methods.getNeighbors(curr.node).forEach((neighbor) => {
-                const moveCost = this.methods.getMovementCost(curr.node, neighbor);
+                const moveCost = this.methods.getMoveCost(curr.node, neighbor);
                 if (moveCost < 0)
                     return;
                 const neighborKey = this.methods.nodeToPrimitive(neighbor);
